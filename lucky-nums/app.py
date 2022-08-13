@@ -4,7 +4,7 @@ from models import db, connect_db, User
 import requests
 import random
 
-API_BASE_URL = "http://numbersapi.com/"
+API_BASE_URL = "http://numbersapi.com"
 
 app = Flask(__name__)
 
@@ -34,7 +34,7 @@ def lucky_num():
     db.session.commit()
 
     year_fact = requests.get(
-        f"{API_BASE_URL}/{user.lucky_num}/{user.year}?json").text
+        f"{API_BASE_URL}/{user.year}/year?json").text
     num_fact = requests.get(f"{API_BASE_URL}/{user.lucky_num}?json").text
 
     response_json = jsonify(num={'num': f'{user.lucky_num}', 'fact': f'{num_fact}'}, year={
