@@ -34,8 +34,8 @@ def lucky_num():
     db.session.commit()
 
     year_fact = requests.get(
-        f"{API_BASE_URL}/{user.year}/year?json").text
-    num_fact = requests.get(f"{API_BASE_URL}/{user.lucky_num}?json").text
+        f"{API_BASE_URL}/{user.year}/year").text
+    num_fact = requests.get(f"{API_BASE_URL}/{user.lucky_num}").text
 
     response_json = jsonify(num={'num': f'{user.lucky_num}', 'fact': f'{num_fact}'}, year={
                             'year': f'{user.year}', 'fact': f'{year_fact}'})
